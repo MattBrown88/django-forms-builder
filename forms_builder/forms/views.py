@@ -14,7 +14,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.template import RequestContext
 from django.utils.http import quote
 from django.views.generic.base import TemplateView
-from email_extras.utils import send_mail_template
+# from email_extras.utils import send_mail_template
 
 from forms_builder.forms.forms import FormForForm
 from forms_builder.forms.models import Form
@@ -97,19 +97,19 @@ class FormDetail(TemplateView):
         email_from = form.email_from or settings.DEFAULT_FROM_EMAIL
         email_to = form_for_form.email_to()
         if email_to and form.send_email:
-            send_mail_template(subject, "form_response", email_from,
-                               email_to, context=context,
-                               fail_silently=EMAIL_FAIL_SILENTLY)
+            # send_mail_template(subject, "form_response", email_from,
+            #                    email_to, context=context,
+            #                    fail_silently=EMAIL_FAIL_SILENTLY)
         headers = None
         if email_to:
             headers = {"Reply-To": email_to}
         email_copies = split_choices(form.email_copies)
         if email_copies:
-            send_mail_template(subject, "form_response_copies", email_from,
-                               email_copies, context=context,
-                               attachments=attachments,
-                               fail_silently=EMAIL_FAIL_SILENTLY,
-                               headers=headers)
+            # send_mail_template(subject, "form_response_copies", email_from,
+            #                    email_copies, context=context,
+            #                    attachments=attachments,
+            #                    fail_silently=EMAIL_FAIL_SILENTLY,
+            #                    headers=headers)
 
 form_detail = FormDetail.as_view()
 

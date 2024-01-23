@@ -11,7 +11,7 @@ except ImportError:
 
 from django.db import models
 from django.db.models import Q
-from django.utils.translation import ugettext, gettext_lazy as _
+from django.utils.translation import gettext, gettext_lazy as _
 from future.builtins import str
 
 from forms_builder.forms import fields

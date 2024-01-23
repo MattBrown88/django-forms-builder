@@ -97,6 +97,7 @@ class FormDetail(TemplateView):
         email_from = form.email_from or settings.DEFAULT_FROM_EMAIL
         email_to = form_for_form.email_to()
         if email_to and form.send_email:
+            pass
             # send_mail_template(subject, "form_response", email_from,
             #                    email_to, context=context,
             #                    fail_silently=EMAIL_FAIL_SILENTLY)
@@ -105,6 +106,7 @@ class FormDetail(TemplateView):
             headers = {"Reply-To": email_to}
         email_copies = split_choices(form.email_copies)
         if email_copies:
+            pass
             # send_mail_template(subject, "form_response_copies", email_from,
             #                    email_copies, context=context,
             #                    attachments=attachments,

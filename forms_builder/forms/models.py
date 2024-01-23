@@ -53,7 +53,7 @@ class FormManager(models.Manager):
 #                                                                    #
 ######################################################################
 
-@python_2_unicode_compatible
+
 class AbstractForm(models.Model):
     """
     A user-built form.
@@ -164,7 +164,6 @@ class FieldManager(models.Manager):
         return self.filter(visible=True)
 
 
-@python_2_unicode_compatible
 class AbstractField(models.Model):
     """
     A field for a user-built form.

@@ -10,7 +10,7 @@ except ImportError:
     # For Django 1.8 compatibility
     from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.shortcuts import get_object_or_404, redirect, render_to_response
+from django.shortcuts import get_object_or_404, redirect, render
 from django.template import RequestContext
 from django.utils.http import urlquote
 from django.views.generic.base import TemplateView
@@ -40,7 +40,7 @@ class FormDetail(TemplateView):
             path = urlquote(request.get_full_path())
             bits = (settings.LOGIN_URL, REDIRECT_FIELD_NAME, path)
             return redirect("%s?%s=%s" % bits)
-        return self.render_to_response(context)
+        return self.render(context)
 
     def post(self, request, *args, **kwargs):
         published = Form.objects.published(for_user=request.user)
@@ -64,7 +64,7 @@ class FormDetail(TemplateView):
                 return redirect(form.redirect_url or
                     reverse("form_sent", kwargs={"slug": form.slug}))
         context = {"form": form, "form_for_form": form_for_form}
-        return self.render_to_response(context)
+        return self.render(context)
 
     def render_to_response(self, context, **kwargs):
         if self.request.method == "POST" and self.request.is_ajax():
